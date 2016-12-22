@@ -2,11 +2,7 @@
 // Creates an array of values corresponding to paths of object.
 const at = (object, paths) => {
   let parsedPaths = []
-  let foundValues =[]
-  if (paths.length == undefined){
-    paths = [paths]
-    return getObjValue(object, paths)
-  }
+  let foundValues = []
   for(let path of paths){
     parsedPaths.push(parsePath(path))
   }
@@ -16,7 +12,20 @@ const at = (object, paths) => {
   return foundValues
 }
 
+const parsePath = ( path ) => {
+  let newPath = path.split('.')
+  let splitPath = []
+  for(let path of newPath) {
+    let parseBrackets = path.replace(/\[/g, ' ').split(' ').join('')
+    parseBrackets = parseBrackets.replace(/\]/g, ' ').split(' ').join('')
+    parseBrackets = parseBrackets.split('')
+    splitPath.push(parseBrackets)
+  }
+  return flattenPath(splitPath)
+}
+
 const getObjValue = (obj, path ) => {
+  if( path.length === 0 ) return undefined
   let returningObj = obj
   for( let step of path ) {
     if( isNaN(parseInt(step)) ) {
@@ -26,15 +35,6 @@ const getObjValue = (obj, path ) => {
     }
   }
   return returningObj
-}
-
-const parsePath = ( path ) => {
-  let newPath = path.split('.')
-  let splitPath = []
-  for(let path of newPath) {
-    splitPath.push( path.split(']')[0].split('['))
-  }
-  return flattenPath(splitPath)
 }
 
 const flattenPath = ( pathArray ) => {

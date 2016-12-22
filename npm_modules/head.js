@@ -3,4 +3,4 @@
 
 const head = (array) => array[0]
 
-modules.exports(head)
+module.exports = head

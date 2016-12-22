@@ -8,8 +8,8 @@ const indexOf = ( array, value, fromIndex) => {
     fromIndex=0
   }
   for ( let i=fromIndex; i<array.length; i++ ){
-    if ( array[index] == value ) {
-      return index
+    if ( array[i] == value ) {
+      return i
     }
   }
 }

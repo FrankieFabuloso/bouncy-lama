@@ -11,6 +11,8 @@ const join = require('./npm_modules/join.js')
 const map = require('./npm_modules/map.js')
 const reduce = require('./npm_modules/reduce.js')
 const zip = require('./npm_modules/zip.js')
+const memoize = require('./npm_modules/memoize.js')
+const flattenDeep = require('./npm_modules/flattenDeep.js')
 
 module.exports = {
   add,
@@ -24,5 +26,7 @@ module.exports = {
   join,
   zip,
   map,
-  reduce
+  reduce,
+  memoize,
+  flattenDeep
 }

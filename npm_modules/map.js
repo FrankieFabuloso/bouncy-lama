@@ -5,10 +5,8 @@
 
 const map = ( collection, func ) => {
   let newArray = []
-  console.log("collection",collection,'-',typeof(collection));
   for( let item in collection ){
     if( Array.isArray(collection) ){
-      console.log(collection, "is an Array")
       item = parseInt(item)
     }
     console.log(typeof(item));
